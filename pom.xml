@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.webguitoolkit.messagebox</groupId>
+	<artifactId>wgt-messagebox</artifactId>
+	<version>01.00.01-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>wgt-messagebox</name>
+	<url>http://webguitoolkit.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<prop.java.sourceversion>1.6</prop.java.sourceversion>
+		<prop.java.targetversion>1.6</prop.java.targetversion>
+		<prop.source.generateSourceJar>true</prop.source.generateSourceJar>
+	</properties>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/webguitoolkit/wgt-messagebox/issues</url>
+	</issueManagement>
+
+	<scm>
+		<connection>scm:git:git@github.com:webguitoolkit/wgt-messagebox.git</connection>
+		<developerConnection>scm:git:git@github.com:webguitoolkit/wgt-messagebox.git</developerConnection>
+		<url>git@github.com:webguitoolkit/wgt-messagebox.git</url>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.1</version>
+			<optional>false</optional>
+		</dependency>
+		<!--  dependency>
+			<groupId>com.telekom.api.client</groupId>
+			<artifactId>telekom-java-sdk</artifactId>
+			<version>3.0.241</version>
+		</dependency-->
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+
+				<configuration>
+					<source>${prop.java.sourceversion}</source>
+					<target>${prop.java.targetversion}</target>
+				</configuration>
+
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-compiler-eclipse</artifactId>
+						<version>1.5.1</version>
+					</dependency>
+				</dependencies>
+
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>archiva.internal</id>
+			<name>Local Archiva repository</name>
+			<url>dav:http://isw600.infoserve.endress.com:8080/archiva/repository/internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>archiva.internal.snapshots</id>
+			<name>Local Archiva repository for snapshots</name>
+			<url>dav:http://isw600.infoserve.endress.com:8080/archiva/repository/snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+		<site>
+			<id>tomcat-isw600</id>
+			<name>site</name>
+			<url>file://D:/Apps/xampp/htdocs/projectsites/${prop.project.group}</url>
+		</site>
+	</distributionManagement>
+
+</project>
